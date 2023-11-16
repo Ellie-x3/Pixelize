@@ -9,3 +9,5 @@
 #else
 	#error Pixelize only supports windows
 #endif // PL_PLATFORM_WINDOWS
+
+#define BIT(x) (1 << x)
