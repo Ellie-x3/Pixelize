@@ -42,5 +42,5 @@ namespace Pixelize {
 		}
 
 		EVENT_CLASS_TYPE(KeyReleased)
-	}
+	};
 }
