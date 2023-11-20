@@ -7,7 +7,7 @@
 		#define PIXELIZE_API __declspec(dllimport)
 	#endif // PL_BUILD_DLL
 #else
-	#error Pixelize only supports windows
+	//#error Pixelize only supports windows
 #endif // PL_PLATFORM_WINDOWS
 
 #ifdef PL_ENABLE_ASSERTS
@@ -19,3 +19,5 @@
 #endif
 
 #define BIT(x) (1 << x)
+
+#define PL_BIND_EVENT_FN(fn) std::bind(&fn, this, std::placeholders::_1) 

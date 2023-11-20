@@ -12,8 +12,12 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 --Inlcude directories 
 IncludeDir = {}
 IncludeDir["GLFW"] = "Pixelize/vendor/GLFW/include"
+IncludeDir["Glad"] = "Pixelize/vendor/glad/include"
+IncludeDir["imgui"] = "Pixelize/vendor/imgui/"
 
 include "Pixelize/vendor/GLFW"
+include "Pixelize/vendor/glad"
+include "Pixelize/vendor/imgui"
 
 project "Pixelize" 
 	location "Pixelize"
@@ -34,13 +38,17 @@ project "Pixelize"
 	includedirs {
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
-		"%{IncludeDir.GLFW}"
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.Glad}",
+		"%{IncludeDir.imgui}"
 	}
 
 	links {
 		"GLFW",
+		"GLAD",
 		"opengl32.lib",
-		"dwmapi.lib"
+		"dwmapi.lib",
+		"ImGui"
 	}
 
 	filter "system:windows"
@@ -50,7 +58,8 @@ project "Pixelize"
 
 		defines {
 			"PL_PLATFORM_WINDOWS",
-			"PL_BUILD_DLL"
+			"PL_BUILD_DLL",
+			"GLFW_INCLUDE_NONE"
 		}
 
 		postbuildcommands {
@@ -59,14 +68,17 @@ project "Pixelize"
 
 	filter "configurations:Debug"
 		defines "PL_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "PL_Release"
+		buildoptions "/MD"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "PL_DIST"
+		buildoptions "/MD"
 		optimize "On"
 
 project "Sandbox"
@@ -101,12 +113,15 @@ project "Sandbox"
 
 	filter "configurations:Debug"
 		defines "PL_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "PL_Release"
+		buildoptions "/MD"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "PL_DIST"
+		buildoptions "/MD"
 		optimize "On"

@@ -6,7 +6,7 @@ namespace Pixelize {
 		None = 0,
 		WindowClose, WindowResize, WindowFocus, WindowLostFocus, WindowMoved,
 		AppTick, AppUpdate, AppRender,
-		KeyPressed, KeyReleased,
+		KeyPressed, KeyReleased, KeyTyped,
 		MouseButtonPressed, MouseButtonReleased, MouseMoved, MouseScrolled
 	};
 
@@ -37,6 +37,9 @@ namespace Pixelize {
 		inline bool IsInCategory(EventCategory category) {
 			return GetCategoryFlags() & category;
 		}
+
+	public:
+		bool Handled = false;
 	protected:
 		bool m_Handled = false;
 	};
@@ -52,6 +55,7 @@ namespace Pixelize {
 			bool Dispatch(EventFn<T> func) {
 				if (m_Event.GetEventType() == T::GetStaticType()) {
 					m_Event.m_Handled = func(*(T*)&m_Event);
+					m_Event.Handled = m_Event.m_Handled; //func(*(T*)&m_Event);
 					return true;
 				}
 

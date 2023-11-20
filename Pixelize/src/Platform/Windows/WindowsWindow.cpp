@@ -1,6 +1,8 @@
 #include "plpch.h"
 #include "WindowsWindow.h"
 
+#include <GLFW/glfw3.h>
+
 namespace Pixelize {
 	static bool s_GLFWInitialized = false;
 
@@ -37,6 +39,10 @@ namespace Pixelize {
 		
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
 		glfwMakeContextCurrent(m_Window);
+		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+
+		PL_ASSERT(status, "Failed to initialize glad")
+
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		SetVSync(true);
 		
@@ -77,6 +83,14 @@ namespace Pixelize {
 					break;
 				}
 			}
+		});
+
+		glfwSetCharCallback(m_Window, [](GLFWwindow* window, unsigned int character) {
+			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+			
+			KeyTypedEvent event(character);
+			data.EventCallback(event);
+
 		});
 
 		glfwSetMouseButtonCallback(m_Window, [](GLFWwindow* window, int button, int action, int mods) {

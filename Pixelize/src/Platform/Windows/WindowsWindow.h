@@ -1,11 +1,14 @@
 #pragma once
 
 #include "Pixelize/Window.h"
-#include "GLFW/glfw3.h"
 
 #include "Pixelize/Events/KeyEvent.h"
 #include "Pixelize/Events/ApplicationEvent.h"
 #include "Pixelize/Events/MouseEvent.h"
+
+#include <glad/glad.h>
+
+struct GLFWwindow;
 
 namespace Pixelize {
 	class WindowsWindow : public Window {
