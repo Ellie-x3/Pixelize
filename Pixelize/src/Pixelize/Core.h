@@ -7,8 +7,12 @@
 		#define PIXELIZE_API __declspec(dllimport)
 	#endif // PL_BUILD_DLL
 #else
-	//#error Pixelize only supports windows
+	#error Pixelize only supports windows
 #endif // PL_PLATFORM_WINDOWS
+
+#ifdef PL_DEBUG
+#define PL_ENABLE_ASSERTS
+#endif
 
 #ifdef PL_ENABLE_ASSERTS
 	#define PL_ASSERT(x, ...) { if(!(x)) { PL_ERROR("Assertion Failed {0}", __VA_ARGS__); __debugbreak(); } }

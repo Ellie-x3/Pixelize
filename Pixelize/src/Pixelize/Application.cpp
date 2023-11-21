@@ -5,6 +5,8 @@
 
 #include <glad/glad.h>
 
+#include "Input.h"
+
 namespace Pixelize {
 
 #define BIND_EVENT_FN(x) std::bind(x, this, std::placeholders::_1)
@@ -39,6 +41,7 @@ namespace Pixelize {
 			glClear(GL_COLOR_BUFFER_BIT);
 			for (Layer* layer : m_LayerStack)
 				layer->OnUpdate();
+			//auto [x, y] = Input::GetMousePosition();
 
 			m_Window->OnUpdate();
 		}
