@@ -14,6 +14,7 @@ IncludeDir = {}
 IncludeDir["GLFW"] = "Pixelize/vendor/GLFW/include"
 IncludeDir["Glad"] = "Pixelize/vendor/glad/include"
 IncludeDir["imgui"] = "Pixelize/vendor/imgui/"
+IncludeDir["glm"] = "Pixelize/vendor/glm"
 
 group "Dependencies"
 	include "Pixelize/vendor/GLFW"
@@ -43,7 +44,8 @@ project "Pixelize"
 		"%{prj.name}/vendor/spdlog/include",
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
-		"%{IncludeDir.imgui}"
+		"%{IncludeDir.imgui}",
+		"%{IncludeDir.glm}"
 	}
 
 	links {
@@ -100,7 +102,8 @@ project "Sandbox"
 
 	includedirs {
 		"Pixelize/vendor/spdlog/include",
-		"Pixelize/src"
+		"Pixelize/src",
+		"%{IncludeDir.glm}"
 	}
 
 	links { "Pixelize" }

@@ -46,6 +46,12 @@
     <ClInclude Include="src\Pixelize\ImGui\ImGuiLayer.h">
       <Filter>Pixelize\ImGui</Filter>
     </ClInclude>
+    <ClInclude Include="src\Pixelize\Input.h">
+      <Filter>Pixelize</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Pixelize\KeyCodes.h">
+      <Filter>Pixelize</Filter>
+    </ClInclude>
     <ClInclude Include="src\Pixelize\Layer.h">
       <Filter>Pixelize</Filter>
     </ClInclude>
@@ -55,20 +61,22 @@
     <ClInclude Include="src\Pixelize\Log.h">
       <Filter>Pixelize</Filter>
     </ClInclude>
+    <ClInclude Include="src\Pixelize\MouseButtonCodes.h">
+      <Filter>Pixelize</Filter>
+    </ClInclude>
     <ClInclude Include="src\Pixelize\Window.h">
       <Filter>Pixelize</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h">
       <Filter>Platform\OpenGL</Filter>
     </ClInclude>
+    <ClInclude Include="src\Platform\Windows\WindowsInput.h">
+      <Filter>Platform\Windows</Filter>
+    </ClInclude>
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
       <Filter>Platform\Windows</Filter>
     </ClInclude>
     <ClInclude Include="src\plpch.h" />
-    <ClInclude Include="src\Pixelize\Input.h" />
-    <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
-    <ClInclude Include="src\Pixelize\KeyCodes.h" />
-    <ClInclude Include="src\Pixelize\MouseButtonCodes.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Pixelize\Application.cpp">
@@ -89,10 +97,12 @@
     <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp">
       <Filter>Platform\OpenGL</Filter>
     </ClCompile>
+    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
+      <Filter>Platform\Windows</Filter>
+    </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
       <Filter>Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\plpch.cpp" />
-    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
   </ItemGroup>
 </Project>

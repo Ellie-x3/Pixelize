@@ -7,3 +7,6 @@
 [submodule "Pixelize/vendor/imgui"]
 	path = Pixelize/vendor/imgui
 	url = https://github.com/TheCherno/imgui
+[submodule "Pixelize/vendor/glm"]
+	path = Pixelize/vendor/glm
+	url = https://github.com/g-truc/glm
